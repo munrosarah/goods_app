@@ -1,4 +1,6 @@
 GoodsApp::Application.routes.draw do
+  get "products/new"
+
   get "static_pages/home"
 
   # The priority is based upon order of creation:
