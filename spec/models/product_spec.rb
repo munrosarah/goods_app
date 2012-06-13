@@ -4,7 +4,7 @@
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
-#  type       :string(255)
+#  variety    :string(255)
 #  price      :float
 #  desc       :string(255)
 #  image      :string(255)
@@ -16,12 +16,12 @@
 require 'spec_helper'
 
 describe Product do
-  before { @product = Product.new(name: "Example Product", type: "Example Type", price: 5.50, desc: "Example Description", image: 'example.png', thumbnail: 'examplethumb.png')}
+  before { @product = Product.new(name: "Example Product", variety: "Example Type", price: 5.50, desc: "Example Description", image: 'example.png', thumbnail: 'examplethumb.png')}
   
   subject { @product }
   
   it { should respond_to(:name) }
-  it { should respond_to(:type) }
+  it { should respond_to(:variety) }
   it { should respond_to(:price) }
   it { should respond_to(:desc) }
   

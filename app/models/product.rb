@@ -4,7 +4,7 @@
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
-#  type       :string(255)
+#  variety    :string(255)
 #  price      :float
 #  desc       :string(255)
 #  image      :string(255)
@@ -14,7 +14,10 @@
 #
 
 class Product < ActiveRecord::Base
-  attr_accessible :desc, :image, :name, :price, :thumbnail, :type
+  attr_accessible :desc, :image, :name, :price, :thumbnail, :variety
   
   validates :name, presence: true, uniqueness: { case_sensitive: false }
+  validates :price, presence: true
+  validates :image, presence: true
+  validates :thumbnail, presence: true
 end

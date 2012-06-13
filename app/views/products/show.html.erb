@@ -1,0 +1,7 @@
+<% provide(:title, @product.name) %>
+
+
+<title><%= yield(:title) %></title>
+<h1><%= @product.name %></h1>
+<%= @product.price %>
+<%= @product.desc %>
