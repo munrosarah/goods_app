@@ -2,6 +2,27 @@
 
 
 <title><%= yield(:title) %></title>
-<h1><%= @product.name %></h1>
-<%= @product.price %>
-<%= @product.desc %>
+<div class = "product">
+  <div class = "name">
+    <%= @product.name %>
+  </div>
+  <div>
+    <span class="attribute">
+      Price:
+    </span>
+    <span class="price">
+      <%= number_to_currency(@product.price, :unit => "$") %></productprice>
+    </span>
+  </div>
+  <div>
+    <span class = "attribute">
+      Description:
+    </span>
+    <span class="desc">
+      <%= @product.desc %>
+    </span>
+  </div>
+  <div>
+    <%= image_tag @product.image %>
+  </div>
+</div>

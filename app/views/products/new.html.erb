@@ -1,5 +1,5 @@
 <%= provide(:title, 'New Product') %>
-<h1>Add a New Product</h1>
+<p>Add a New Product</p>
 
 <div class="row">
   <div class="span6 offset3">
@@ -23,7 +23,8 @@
       <%= f.label :thumbnail %>
       <%= f.text_field :thumbnail %>
       
-
+      <br>
+      <br>
       <%= f.submit "Create a product", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
