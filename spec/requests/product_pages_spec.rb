@@ -8,8 +8,7 @@ describe "Product pages" do
     let(:product) {FactoryGirl.create(:product)}
     before { visit product_path(product) }
     
-    it { should have_selector('h1', text: product.name) }
-    it { should have_selector('title', text: product.name) }
+   it { should have_selector('title', text: product.name) }
     
   end
   
@@ -28,11 +27,10 @@ describe "Product pages" do
     describe "with valid information" do
       before do
         fill_in "Name",       with: "Example Product"
-        fill_in "Variety",    with: "Example Variety"
+        select 'Single Card', from: "variety"
         fill_in "Price",      with: 5.54
         fill_in "Desc",       with: "Example Description"
-        fill_in "Image",      with: "example.png"
-        fill_in "Thumbnail",  with: "examplethumb.png"
+        select 'example.png', from: "image"
       end
       
       it "should create a new product" do

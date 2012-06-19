@@ -2,3 +2,5 @@ Add format validation for product.price
 Add format validation for product.image and .thumbnail
 Add error messages to failed product addition
 Format CSS
+
+Show products on home page

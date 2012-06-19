@@ -1,31 +1,31 @@
-<%= provide(:title, 'New Product') %>
-<p>Add a New Product</p>
+<% provide(:title, 'New Product') %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@product) do |f| %>
+<title><%= yield(:title) %></title>
+<h2><%= yield(:title) %></h2>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
 
-      <%= f.label :variety %>
-      <%= f.text_field :variety %>
 
-      <%= f.label :price %>
-      <%= f.text_field :price %>
+<div>
+  <%= form_for(@product) do |f| %>
 
-      <%= f.label :desc, "Description" %>
-      <%= f.text_field :desc %>
-
-      <%= f.label :image %>
-      <%= f.text_field :image %>
-
-      <%= f.label :thumbnail %>
-      <%= f.text_field :thumbnail %>
-      
-      <br>
-      <br>
-      <%= f.submit "Create a product", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  
+    <%= f.label :variety, "variety" %>  
+    <%= f.select(:variety, [['Single Card','Single Card'],['Card Set', 'Card Set']]) %>
+  
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  
+    <%= f.label :desc, "Description" %>
+    <%= f.text_area :desc, :cols => "40", :rows => "10" %>
+  
+    <%= f.label :image, "image" %>
+    <%= f.select(:image, create_image_list) %>
+  
+    
+    <br>
+    <br>
+    <%= f.submit "Create a product", class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>

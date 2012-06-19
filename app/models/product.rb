@@ -8,16 +8,14 @@
 #  price      :float
 #  desc       :string(255)
 #  image      :string(255)
-#  thumbnail  :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
 
 class Product < ActiveRecord::Base
-  attr_accessible :desc, :image, :name, :price, :thumbnail, :variety
+  attr_accessible :desc, :image, :name, :price, :variety
   
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :price, presence: true
   validates :image, presence: true
-  validates :thumbnail, presence: true
 end

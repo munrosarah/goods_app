@@ -8,7 +8,6 @@
 #  price      :float
 #  desc       :string(255)
 #  image      :string(255)
-#  thumbnail  :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
@@ -16,7 +15,7 @@
 require 'spec_helper'
 
 describe Product do
-  before { @product = Product.new(name: "Example Product", variety: "Example Type", price: 5.50, desc: "Example Description", image: 'example.png', thumbnail: 'examplethumb.png')}
+  before { @product = Product.new(name: "Example Product", variety: "Single Card", price: 5.50, desc: "Example Description", image: 'example.png')}
   
   subject { @product }
   
