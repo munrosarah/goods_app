@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :product do
-    name    "Example Product"
+    sequence(:name) { |n| "Product #{n}" }
     variety "Single Card"
     price   5.50
     desc    "Example description"

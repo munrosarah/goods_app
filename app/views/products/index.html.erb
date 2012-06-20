@@ -2,6 +2,8 @@
 <title><%= yield(:title) %></title>
 <h1>All products</h1>
 
+<%= will_paginate @products %>
+
 <ul class="products">
   <% @products.each do |product| %>
     <li>
@@ -11,3 +13,5 @@
   <% end %>
   
 </ul>
+
+<%= will_paginate @products %>

@@ -5,19 +5,27 @@ describe "Product pages" do
   subject { page }
 
   describe "index" do
-    before do
-      FactoryGirl.create(:product)
-      FactoryGirl.create(:product, name: "Product A")
-      FactoryGirl.create(:product, name: "Product B")
+    
+    let(:product) { FactoryGirl.create(:product) }
+    
+    before(:all) { 31.times {FactoryGirl.create(:product) } }
+    after(:all) { Product.delete_all }
+    
+    before(:each) do
       visit products_path
     end
     
     it { should have_selector('title', text: 'All products') }
     it { should have_selector('h1', text: 'All products') }
     
-    it "should list each product" do
-      Product.all.each do |product|
-        page.should have_selector('li', text: product.name)
+    describe "pagination" do
+      
+      it { should have_selector('div.pagination') }
+      
+      it "should list each product" do
+        Product.paginate(page: 1).each do |product|
+          page.should have_selector('li', text: product.name)
+        end
       end
     end
   end
