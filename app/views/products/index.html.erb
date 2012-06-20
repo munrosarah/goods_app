@@ -4,14 +4,17 @@
 
 <%= will_paginate @products %>
 
-<ul class="products">
-  <% @products.each do |product| %>
-    <li>
-      <%= image_tag "goods/" + product.image %>
-      <%= link_to product.name, product %>
-    </li>
+<table class="products">
+  <% @products.in_groups_of(3) do |three_products| %>
+    <tr>
+    <% three_products.each do |single_product| %>
+      <% unless single_product.nil? %>
+        <td><%= render single_product %></td>
+      <% end %>  
+    <% end %>
+    </tr>
   <% end %>
   
-</ul>
+</table>
 
 <%= will_paginate @products %>

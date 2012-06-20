@@ -40,8 +40,20 @@ div.product img {
     margin-top: 10px;
 }
 
-div.product_thumb {
-    width: 250px;
+div.product_small{
+    width: 200px;
     border-width: 1px;
     border-style: solid;
+    text-align: center;
+}
+
+
+div.product_thumb img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.product_small a {
+    
 }

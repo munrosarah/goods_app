@@ -8,7 +8,7 @@ describe "Product pages" do
     
     let(:product) { FactoryGirl.create(:product) }
     
-    before(:all) { 31.times {FactoryGirl.create(:product) } }
+    before(:all) { 18.times {FactoryGirl.create(:product) } }
     after(:all) { Product.delete_all }
     
     before(:each) do
@@ -22,9 +22,9 @@ describe "Product pages" do
       
       it { should have_selector('div.pagination') }
       
-      it "should list each product" do
-        Product.paginate(page: 1).each do |product|
-          page.should have_selector('li', text: product.name)
+      it "should display each product" do
+        Product.paginate(page: 1, per_page: 12).each do |product|
+          page.should have_selector('a', text: product.name)
         end
       end
     end

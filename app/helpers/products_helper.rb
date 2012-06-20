@@ -13,6 +13,5 @@ module ProductsHelper
     option_array
     
   end
-  
-  
+
 end
