@@ -35,3 +35,21 @@ input, textarea, select, .uneditable-input {
   height: auto;
   margin-bottom: 15px;
 }
+
+/* products index */
+.products {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+.products img {
+    width: 100px;
+}

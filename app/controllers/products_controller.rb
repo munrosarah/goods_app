@@ -17,4 +17,9 @@ class ProductsController < ApplicationController
       render 'new'
     end
   end
+  
+  def index
+    @products = Product.all
+  end
+  
 end

@@ -1,0 +1,13 @@
+<% provide(:title, 'All products') %>
+<title><%= yield(:title) %></title>
+<h1>All products</h1>
+
+<ul class="products">
+  <% @products.each do |product| %>
+    <li>
+      <%= image_tag "goods/" + product.image %>
+      <%= link_to product.name, product %>
+    </li>
+  <% end %>
+  
+</ul>
