@@ -5,9 +5,9 @@
 <%= will_paginate @products %>
 
 <table class="products">
-  <% @products.in_groups_of(3) do |three_products| %>
+  <% @products.in_groups_of(3) do |product_row| %>
     <tr>
-    <% three_products.each do |single_product| %>
+    <% product_row.each do |single_product| %>
       <% unless single_product.nil? %>
         <td><%= render single_product %></td>
       <% end %>  
