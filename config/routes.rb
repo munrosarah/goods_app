@@ -1,4 +1,6 @@
 GoodsApp::Application.routes.draw do
+  get "users/new"
+
   resources :products
   
   root to: 'static_pages#home'
