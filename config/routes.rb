@@ -7,6 +7,9 @@ GoodsApp::Application.routes.draw do
   
   get 'static_pages/home'
   get 'products/index'
+  
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
 
   
   
