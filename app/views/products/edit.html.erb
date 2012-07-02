@@ -1,20 +1,21 @@
-<% provide(:title, 'New Product') %>
+<% provide(:title, "Edit this Product") %>
+
 
 <title><%= yield(:title) %></title>
-<h2><%= yield(:title) %></h2>
 
+<h1><%= yield(:title) %></h1>
 
 
 <div>
   <%= form_for(@product) do |f| %>
-
-    <%= render 'shared/error_messages' %>
   
+    <%= render 'shared/error_messages' %>
+
     <%= f.label :name %>
     <%= f.text_field :name %>
   
     <%= f.label :variety, "Variety" %>  
-    <%= f.select(:variety, [['Single Card','Single Card'],['Card Set', 'Card Set']]) %>
+    <%= f.select(:variety, [['Single Card','Single Card'],['Card Set', 'Card Set']], selected: @product.variety) %>
   
     <%= f.label :price %>
     <%= f.text_field :price %>
@@ -23,11 +24,11 @@
     <%= f.text_area :desc, :cols => "40", :rows => "10" %>
   
     <%= f.label :image, "Image" %>
-    <%= f.select(:image, create_image_list) %>
+    <%= f.select(:image, create_image_list, selected: @product.image) %>
   
     
     <br>
     <br>
-    <%= f.submit "Create a product", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
   <% end %>
 </div>

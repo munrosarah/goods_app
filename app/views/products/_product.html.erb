@@ -1,17 +1,17 @@
 
 <div class = "product_small">
-    <div class = "product_thumb">
-        <div class = "product_holder">
-            <%= link_to image_tag("goods/" + product.image), product %>
+    <div class = "product_holder">
+        <%= link_to image_tag("goods/" + product.image), product %>
+    </div>
+    <div class = "product_info">
+        <div class = "product_name"> 
+            <%= link_to product.name, product %>
         </div>
-    </div>
-    <div class = "product_name"> 
-        <%= link_to product.name, product %>
-    </div>
-    <div class = "product_type">
-        <%= product.variety %>:
-        <span class ="product_price">
-            <%= number_to_currency(product.price, unit: "$") %>
-        </span>
+        <div class = "product_type">
+            <%= product.variety %>:
+            <span class ="product_price">
+                <%= number_to_currency(product.price, unit: "$") %>
+            </span>
+        </div>
     </div>
 </div>

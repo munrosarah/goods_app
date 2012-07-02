@@ -17,5 +17,6 @@ class Product < ActiveRecord::Base
   
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :price, presence: true
-  validates :image, presence: true
+  validates :image, presence: true, exclusion: {in: %w(Select),
+    message: "must be valid"}
 end

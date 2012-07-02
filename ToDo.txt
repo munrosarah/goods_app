@@ -4,4 +4,5 @@ Add error messages to failed product addition
 Format CSS
 
 Show products on home page
-Alphabetize images on product new page
+/*Alphabetize images on product new page*/
+Remove path from images on product new page
