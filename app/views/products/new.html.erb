@@ -1,6 +1,5 @@
 <% provide(:title, 'New Product') %>
 
-<title><%= yield(:title) %></title>
 <h2><%= yield(:title) %></h2>
 
 
@@ -8,7 +7,7 @@
 <div>
   <%= form_for(@product) do |f| %>
 
-    <%= render 'shared/error_messages' %>
+    <%= render 'shared/error_messages', target: @product %>
   
     <%= f.label :name %>
     <%= f.text_field :name %>
