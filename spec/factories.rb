@@ -7,11 +7,14 @@ FactoryGirl.define do
     image   "example.png"
   end
   
-  factory :user  do
-    name      "Escher Munro"
-    email     "escher@fake.com"
-    password  "foobar"
+  factory :user do
+    sequence(:name)  { |n| "Person #{n}" }
+    sequence(:email) { |n| "person_#{n}@example.com"}   
+    password "foobar"
     password_confirmation "foobar"
-    
+
+    factory :admin do
+      admin true
+    end
   end
 end
