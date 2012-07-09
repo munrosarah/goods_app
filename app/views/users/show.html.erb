@@ -1,3 +1,27 @@
 
 <% provide(:title, @user.name) %>
+<div class="row">
 <h1><%= @user.name %></h1>
+
+  <aside>
+    
+  </aside>
+  <div class="span8">
+    <% if @user.products.any? %>
+      <h3>Products (<%= @user.products.count %>)</h3>
+      <%= will_paginate @products %>
+      <table class="products">
+        <% @products.in_groups_of(3) do |product_row| %>
+          <tr>
+          <% product_row.each do |single_product| %>
+            <% unless single_product.nil? %>
+              <td><%= render single_product %></td>
+            <% end %>  
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
+      <%= will_paginate @products %>
+    <% end %>
+  </div>
+</div>

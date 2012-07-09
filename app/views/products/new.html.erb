@@ -1,8 +1,7 @@
 <% provide(:title, 'New Product') %>
 
+
 <h2><%= yield(:title) %></h2>
-
-
 
 <div>
   <%= form_for(@product) do |f| %>
@@ -23,7 +22,6 @@
   
     <%= f.label :image, "Image" %>
     <%= f.select(:image, create_image_list) %>
-  
     
     <br>
     <br>

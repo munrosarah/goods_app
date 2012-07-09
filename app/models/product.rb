@@ -14,9 +14,11 @@
 
 class Product < ActiveRecord::Base
   attr_accessible :desc, :image, :name, :price, :variety
+  belongs_to :user
   
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :price, presence: true
   validates :image, presence: true, exclusion: {in: %w(Select),
     message: "must be valid"}
+  validates :user_id, presence: true
 end

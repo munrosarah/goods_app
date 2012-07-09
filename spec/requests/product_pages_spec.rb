@@ -4,6 +4,10 @@ describe "Product pages" do
   
   subject { page }
 
+  let(:user) { FactoryGirl.create(:user) }
+  before { sign_in user }
+  
+
   describe "index" do
     
     let(:product) { FactoryGirl.create(:product) }
@@ -48,6 +52,11 @@ describe "Product pages" do
       it "should not create a product" do
         expect { click_button submit }.not_to change(Product, :count)
       end
+      
+      describe "error messages" do
+        before { click_button submit }
+        it { should have_content('error') }
+      end
     end
     
     describe "with valid information" do
@@ -66,47 +75,47 @@ describe "Product pages" do
   end
   
   describe "edit" do
-    let(:product) { FactoryGirl.create(:product) }
-    before { visit edit_product_path(product) }
+    let(:product) { FactoryGirl.create(:product, user: user) }
     
-    describe "page" do
+    describe "as correct user" do
+      before { visit edit_product_path(product) }
+      
       it { should have_selector('h1', text: "Edit this Product") }
       it { should have_selector('title', text: "Edit this Product") }
-    end
+
     
-    #!!!!!!!!!!!!!ADD LOGIN HERE WHERE THE PASSWORD IS BLANK
-    #describe "with invalid information" do      
-    #  before {click_button "Save changes" }
-      
-    #  it { should have_content('error') }
-      
-    #end
-    
-    describe "with valid information" do
-    
-      let(:new_name) {"New Name"}
-      let(:new_variety) {"Card Set"}
-      let(:new_price) { 15 }
-      let(:new_desc) {"A new description"}
-      let(:new_image) {"example.png"}
-      
-      before do
-        fill_in "Name",         with: new_name
-        select new_variety,     from: "Variety"
-        fill_in "Price",        with: new_price
-        fill_in "Description",  with: new_desc
-        select new_image,      from: "Image"
+      #!!!!!!!!!!!!!ADD LOGIN HERE WHERE THE PASSWORD IS BLANK
+      #describe "with invalid information" do      
+      #  before {click_button "Save changes" }
         
-        click_button "Save changes"
+      #  it { should have_content('error') }
+        
+      #end
+      
+      describe "with valid information" do
+      
+        let(:new_name) {"New Name"}
+        let(:new_variety) {"Card Set"}
+        let(:new_price) { 15 }
+        let(:new_desc) {"A new description"}
+        let(:new_image) {"example.png"}
+        
+        before do
+          fill_in "Name",         with: new_name
+          select new_variety,     from: "Variety"
+          fill_in "Price",        with: new_price
+          fill_in "Description",  with: new_desc
+          select new_image,       from: "Image"
+          
+          click_button "Save changes"
+        end
+        
+        it { should have_selector('title', text: new_name) }
+        it { should have_selector('div.alert.alert-success')}
+        
+        specify { product.reload.name.should == new_name }
+        specify { product.reload.variety.should == new_variety }
       end
-      
-      it { should have_selector('title', text: new_name) }
-      it { should have_selector('div.alert.alert-success')}
-      
-      specify { product.reload.name.should == new_name }
-      specify { product.reload.variety.should == new_variety }
     end
-    
-  
   end
 end

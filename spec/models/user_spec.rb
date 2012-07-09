@@ -25,6 +25,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }  
+  it { should respond_to(:products) }
   
   it { should be_valid }
 
@@ -117,5 +118,30 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+  
+  describe "product association" do
+    before { @user.save }
+    let!(:first_product) do
+      FactoryGirl.create(:product, user: @user, name: "Factory Product 1")
+    end
+    
+    let!(:second_product) do
+      FactoryGirl.create(:product, user: @user, name: "Factory Product 2")
+    end
+    
+    it "should have the right products" do
+      @user.products.should == [first_product, second_product]
+    end
+  
+    it "should destroy associated products" do
+      products = @user.products
+      @user.destroy
+      products.each do |product|
+        Product.find_by_id(product.id).should be_nil
+      end
+    end
+  end
+  
+  
 end
 

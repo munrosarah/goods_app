@@ -15,7 +15,9 @@
 require 'spec_helper'
 
 describe Product do
-  before { @product = Product.new(name: "Example Product", variety: "Single Card", price: 5.50, desc: "Example Description", image: 'example.png')}
+  
+  let(:user) { FactoryGirl.create(:user) }
+  before { @product = user.products.build(name: "Example Product", variety: "Single Card", price: 5.50, desc: "Example Description", image: 'example.png') }
   
   subject { @product }
   
@@ -23,8 +25,15 @@ describe Product do
   it { should respond_to(:variety) }
   it { should respond_to(:price) }
   it { should respond_to(:desc) }
+  it { should respond_to(:user) }
+  its(:user) { should == user }
   
   it { should be_valid }
+  
+  describe "when user_id is not present" do
+    before { @product.user_id = nil }
+    it { should_not be_valid }
+  end
   
   describe "when name is not present" do
     before { @product.name = " "}
@@ -39,5 +48,13 @@ describe Product do
     end
     
     it { should_not be_valid }
+  end
+  
+  describe "accessible attributes" do
+    it "should not allow access to user_id" do
+      expect do
+        Product.new(user_id: user.id)
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)    
+    end
   end
 end
