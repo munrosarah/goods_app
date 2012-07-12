@@ -1,9 +1,16 @@
 <% provide(:title, @product.name) %>
 
-
 <div class = "product">
   <div class = "name">
     <%= @product.name %>
+  </div>
+  <div>
+    <span class = "attribute">
+      By:
+    </span>
+    <span>
+      <%= link_to User.find_by_id(@product.user_id).name, User.find_by_id(@product.user_id) %>
+    </span>  
   </div>
   <div>
     <span class="attribute">
@@ -20,6 +27,13 @@
     <span class="desc">
       <%= @product.desc %>
     </span>
+  </div>
+    <div>
+     <% if current_user?(User.find(@product.user_id)) %>
+        <%= link_to "edit", edit_product_path(@product) %> |
+        <%= link_to "delete", @product, method: :delete,
+                                      data: { confirm: "You sure?" } %>
+      <% end %>
   </div>
   <div>
     <%= image_tag "goods/" + @product.image %>

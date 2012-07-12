@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
   
   def edit
-    @product = Product.find(params[:id]) if signed_in?
+    @product = current_user.products.find_by_id(params[:id]) if signed_in?
   end
   
   def update
@@ -39,15 +39,15 @@ class ProductsController < ApplicationController
   end
   
   def destroy
-  
+    @product.destroy
+    redirect_to user_path(current_user)
   end
   
   private
     
     def correct_user
-      @product = Product.find(params[:id])
-      @user = User.find(@product.user_id)
-      redirect_to(root_path) unless current_user?(@user)
+      @product = current_user.products.find_by_id(params[:id])
+      redirect_to(user_path) if @product.nil?
     end
   
 end

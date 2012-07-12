@@ -74,7 +74,7 @@ describe "Product pages" do
     end
   end
   
-  describe "edit" do
+  describe "product edit" do
     let(:product) { FactoryGirl.create(:product, user: user) }
     
     describe "as correct user" do
@@ -115,6 +115,18 @@ describe "Product pages" do
         
         specify { product.reload.name.should == new_name }
         specify { product.reload.variety.should == new_variety }
+      end
+    end
+  end
+  
+  describe "product destruction" do
+    before { FactoryGirl.create(:product, user: user)}
+    
+    describe "as correct user" do
+      before { visit products_path }
+    
+      it "should delete a product" do
+        expect { click_link "delete" }.should change(Product, :count).by(-1)
       end
     end
   end

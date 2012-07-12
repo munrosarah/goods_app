@@ -1,13 +1,7 @@
 <% provide(:title, 'Home') %>
 
-<title><%= yield(:title) %></title>
-
-<div class="center hero-unit">
-<h1>Welcome to the Goods App</h1>
-
-<h2>Add and edit products with ease and delight!</h2>
-
-<%= link_to "Sign up now!", 'signup', class: "btn btn-large btn-primary" %>
-  
-  
-</div>
+<% if signed_in? %>
+  <%= render 'shared/user_profile' %>
+<% else %>
+  <%= render 'home_signed_out' %>
+<% end %>

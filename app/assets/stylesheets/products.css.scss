@@ -2,46 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.product {
+.product {
     font-family: "Lucida Sans Unicode";
     padding: 25px 25px 25px 25px;
+        .attribute{
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 150%;
+    }
     
-}
+    .name {
+        font-size: 24px;
+        color: #0000A0;
+        line-height: 150%;
+    }
 
-div.product .attribute{
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 150%;
-}
-
-div.product .name {
-    font-size: 24px;
-    color: #0000A0;
-    line-height: 150%;
-}
-
-div.product .price {
+    .price {
     font-size: 14px;
     color: #A52A2A;
     line-height: 150%;
+    }
+
+    .desc{
+        font-size: 14px;
+        line-height: 150%;
+    }
+
+    img {
+        width: 500px;
+        
+        margin-top: 10px;
+    }
+    
 }
 
-div.product .desc{
-    font-size: 14px;
-    line-height: 150%;
-}
-
-div.product img {
-    width: 500px;
-    border-width: 1px;
-    border-style: solid;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-div.product_small{
+.product_small{
     width: 200px;
     height: 210px;
     text-align: center;
@@ -52,52 +47,70 @@ div.product_small{
     border-color: #5E8C6A;
     font-family: "Lucida Sans Unicode";
     position: relative;
+
+        
+    .product_info{
+        height: 60px;
+    
+        padding:5px;
+        margin-top: auto;
+        margin-bottom: auto;
+        
+    }
+    
+    .product_name{
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    
+    .product_type {
+        color: #5E8C6A;
+    }
+    
+    .product_price{
+        color: #A3ADAF;
+    }
+
+    a:link, a:visited{
+        color: rgb(131, 29, 55);
+    }
+    
+    a:active, a:hover{
+        color: rgb(98,25,32);
+    }
+
 }
 
 
-div.product_holder{
+.product_holder{
     width:100%;
     height: 140px;
     margin-left: auto;
     margin-right: auto;
     background-color:#E8E5E5;
     
-}
-
-
-div.product_holder img{
-    margin-left: auto;
-    margin-right: auto;
-    height: 140px;
-}
-
-div.product_small .product_info{
-    height: 60px;
-
-    padding:5px;
-    margin-top: auto;
-    margin-bottom: auto;
+    img{
+        margin-left: auto;
+        margin-right: auto;
+        height: 140px;
+        background: none;
+    }
     
 }
 
-div.product_small .product_name{
-    margin-top: 10px;
-    font-size: 14px;
+
+
+.preview_box {
+    margin: 0px 10px 10px 0px;
+    border-color: rgb(220,220,220);
+    border-width: 1px;
+    border-style: solid;
+    max-height: 50px;
+    overflow: hidden;
+    
 }
 
-div.product_small .product_type {
-    color: #5E8C6A;
-}
-
-div.product_small .product_price{
-    color: #A3ADAF;
-}
-
-div.product_small a:link, a:visited {
-    color: #8C2318;
-}
-
-div.product_small a:hover, a:active {
-    color: #ED3300;
-    text-decoration: none;
+.preview_image{
+        margin-top: -100px;
+        width: 200px;
 }

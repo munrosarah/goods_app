@@ -13,5 +13,4 @@ module ProductsHelper
     option_array.sort!
     
   end
-
 end

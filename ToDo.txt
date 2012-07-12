@@ -6,3 +6,10 @@ Format CSS
 Show products on home page
 /*Alphabetize images on product new page*/
 Remove path from images on product new page
+
+
+  <% if user.products.any? %>
+    <% product1 = first_product(user) %>
+    <%= render partial: 'products/product', object: product1 %>    
+  <% end %>
+  

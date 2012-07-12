@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td style="padding: 20px">
+      <h3>
+        <%= current_user.name %>
+      </h3>
+      <div>
+        <%= link_to "view my products", current_user %>
+      </div>
+      <div>
+        <%= pluralize(current_user.products.count, "product") %>
+      </div>  
+    </td>
+    <td>
+      <%= render partial: 'shared/new_product_feed', locals: {user: current_user} %>  
+    </td>
+  </tr>
+</table>

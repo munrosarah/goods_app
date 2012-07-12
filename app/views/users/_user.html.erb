@@ -1,7 +1,21 @@
 <li>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
+  <table>
+    <tr>
+      <td style="min-width: 150px">
+        <%= link_to user.name, user %>
+        <% if current_user.admin? && !current_user?(user) %>
+          | <%= link_to "delete", user, method: :delete,
+                                        data: { confirm: "You sure?" } %>
+        <% end %>
+        <div>
+          <%= pluralize(user.products.count, "product") %>
+        </div>
+      </td>
+      <td>
+        <% if user.products.any? %>
+         <%= render partial: 'shared/new_product_feed', locals: {user: user} %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 </li>

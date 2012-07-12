@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <% user.products.last(3).reverse.each do |single_product| %>
+      <% unless single_product.nil? %>
+        <td>
+          <div class = "preview_box">
+            <%= render partial: 'shared/product_preview', locals: {product: single_product} %>
+          </div>
+        </td>
+      <% end %> 
+    <% end %>
+  </tr>
+</table>
+
+
