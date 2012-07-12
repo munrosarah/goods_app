@@ -24,4 +24,12 @@ namespace :db do
                                                 image: "example.png")}
     end
   end
+  
+  task create_admin: :environment do
+    admin = User.create!(name: "Escher Munro",
+                         email: "escher@fake.com",
+                         password: "biscuit",
+                         password_confirmation: "biscuit")
+    admin.toggle!(:admin)
+  end
 end

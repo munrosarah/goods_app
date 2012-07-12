@@ -15,4 +15,9 @@
       <%= render partial: 'shared/new_product_feed', locals: {user: current_user} %>  
     </td>
   </tr>
+  <tr>
+    <td>
+      <%= link_to "Create a Product", 'products/new', class: "btn btn-large btn-primary" %>
+    </td>
+  </tr>
 </table>

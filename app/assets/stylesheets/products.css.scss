@@ -106,11 +106,19 @@
     border-width: 1px;
     border-style: solid;
     max-height: 50px;
+    width: 200px;
     overflow: hidden;
     
 }
 
 .preview_image{
-        margin-top: -100px;
-        width: 200px;
+        margin-top: -125px;
+        margin-left: -50px;
+        width: 300px;
+}
+
+
+.product_created_at{
+    margin-top: -10px;
+    text-align: center;
 }

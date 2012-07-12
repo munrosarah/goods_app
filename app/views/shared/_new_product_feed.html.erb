@@ -6,9 +6,17 @@
           <div class = "preview_box">
             <%= render partial: 'shared/product_preview', locals: {product: single_product} %>
           </div>
+          <div class = "product_created_at">
+            <%= single_product.created_at.strftime("%d %b %y") %>
+          </div>  
         </td>
       <% end %> 
     <% end %>
+    <td>
+      <% if user.products.count > 3 then %>
+        <%= link_to "MORE >>", user %>
+      <% end %>
+    </td>
   </tr>
 </table>
 

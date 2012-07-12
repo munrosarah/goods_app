@@ -7,21 +7,31 @@
     
   </aside>
   <div class="span8">
-    <% if @user.products.any? %>
-      <h3>Products (<%= @user.products.count %>)</h3>
-      <%= will_paginate @products %>
-      <table class="products">
-        <% @products.in_groups_of(3) do |product_row| %>
-          <tr>
-          <% product_row.each do |single_product| %>
-            <% unless single_product.nil? %>
-              <td><%= render single_product %></td>
-            <% end %>  
-          <% end %>
-          </tr>
-        <% end %>
-      </table>
-      <%= will_paginate @products %>
-    <% end %>
+    <table class="products">
+      <% if @user.products.any? %>
+        <h3>Products (<%= @user.products.count %>)</h3>
+        <%= will_paginate @products %>
+        
+          <% @products.in_groups_of(3) do |product_row| %>
+            <tr>
+            <% product_row.each do |single_product| %>
+              <% unless single_product.nil? %>
+                <td><%= render single_product %></td>
+              <% end %>  
+            <% end %>
+            </tr>
+          <% end %>      
+        <%= will_paginate @products %>
+      <% end %>
+        <tr>
+          <td>
+            <% if current_user?(@user) then %>
+              <%= link_to "Create a Product", '../products/new', class: "btn btn-large btn-primary" %>
+            <% end %>
+          </td>
+        </tr>
+    </table>
   </div>
+
+
 </div>

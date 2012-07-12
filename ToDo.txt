@@ -13,3 +13,4 @@ Remove path from images on product new page
     <%= render partial: 'products/product', object: product1 %>    
   <% end %>
   
+ 
