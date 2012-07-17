@@ -38,8 +38,7 @@ describe "Product pages" do
     let(:product) {FactoryGirl.create(:product)}
     before { visit product_path(product) }
     
-   it { should have_selector('title', text: product.name) }
-    
+    it { should have_selector('title', text: product.name) }
   end
   
   describe "add new product" do 
@@ -58,11 +57,11 @@ describe "Product pages" do
         it { should have_content('error') }
       end
     end
-    
+  
     describe "with valid information" do
       before do
         fill_in "Name",       with: "Example Product"
-        select 'Single Card', from: "Variety"
+        select 'Single Item', from: "Variety"
         fill_in "Price",      with: 5.54
         fill_in "Desc",       with: "Example Description"
         select 'example.png', from: "Image"
@@ -70,10 +69,15 @@ describe "Product pages" do
       
       it "should create a new product" do
         expect { click_button submit }.to change(Product, :count).by(1)
-      end  
+      end
+      
+      describe "should forward the user to the product page" do
+        before { click_button submit }
+        it { should have_content('By') }
+      end
     end
   end
-  
+
   describe "product edit" do
     let(:product) { FactoryGirl.create(:product, user: user) }
     

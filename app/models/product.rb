@@ -21,4 +21,9 @@ class Product < ActiveRecord::Base
   validates :image, presence: true, exclusion: {in: %w(Select),
     message: "must be valid"}
   validates :user_id, presence: true
+  
+  def price=(value)
+    value = value.to_s.tr('$', '').to_f
+    write_attribute(:price, value)
+  end
 end
