@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <% user.products.last(3).reverse.each do |single_product| %>
+    <% user.products.first(3).each do |single_product| %>
       <% unless single_product.nil? %>
         <td>
           <div class = "preview_box">
